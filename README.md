@@ -83,5 +83,7 @@ pip3 install mysql-connector-python
 7. Working example
 ```
 python3 mysqlsproc.py
+yosefrats-MacBook-Pro:g-test yosefrat$ python3 mysqlsproc.py 
+Jamille has 3 houses
 ```
 

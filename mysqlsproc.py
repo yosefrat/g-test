@@ -16,4 +16,6 @@ cur = mydb.cursor()
 # Retrieve
 result = cur.callproc('how_many_houses',['Jamille',0])
 
-print(result)
+the_number_of_houses_jamille_has = result[1]
+
+print("Jamille has {0} houses".format(the_number_of_houses_jamille_has))

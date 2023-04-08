@@ -86,4 +86,33 @@ python3 mysqlsproc.py
 -- yosefrats-MacBook-Pro:g-test yosefrat$ python3 mysqlsproc.py 
 -- Jamille has 3 houses
 ```
+8. Make a more advanced sproc returning a set instead of a scalar
+```sql
+DELIMITER //
+DROP PROCEDURE IF EXISTS all_house_count;
+CREATE PROCEDURE all_house_count(how_many_rows INT) # Note the lack of an OUT parameter here
+       BEGIN
+         SELECT p.name, COUNT(*)
+         FROM house h 
+           join person_house ph ON ph.house_id = h.house_id
+           join person p ON ph.person_id = p.person_id
+         GROUP BY p.name
+         LIMIT how_many_rows;
+       END //
+       
+DELIMITER ; 
+```
 
+9. Call the proc in mysql:
+```
+call all_house_count(5);
+```
+
+10. Call the proc in Python:
+```
+yosefrats-MacBook-Pro:g-test yosefrat$ python3 mysqlsproc.py 
+If we look for Jamille's homes, he has 3 houses
+What if we want to know all owners?
+Jamille owns 3 houses
+Jerry owns 1 houses
+```

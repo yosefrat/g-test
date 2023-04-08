@@ -80,4 +80,8 @@ SELECT @houses;
 pip3 install mysql-connector-python
 ```
 
+7. Working example
+```
+python3 mysqlsproc.py
+```
 
